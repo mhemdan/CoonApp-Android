@@ -9,6 +9,7 @@ import com.jodelapp.features.todos.models.TodoPresentationModel;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.xml.transform.TransformerFactory;
 
 import io.reactivex.Single;
 
@@ -29,9 +30,11 @@ final class GetTodoListByUserImpl implements GetTodoListByUser {
 
     @Override
     public Single<List<TodoPresentationModel>> call(@NonNull String userId) {
+        //todo Don't know how but there are no use of the work thread need some clarification here
         return apiService.getToDos(userId)
                 .flatMapIterable(todos -> todos)
-                .map(toDo -> new TodoPresentationModel(String.valueOf(toDo.getId()), toDo.getTitle(), toDo.getCompleted() ? "done" : "todo"))
+                .map(toDo -> new TodoPresentationModel(String.valueOf(toDo.getId()), toDo.getTitle(),
+                        toDo.getCompleted() ? "done" : "todo"))
                 .toList();
     }
 }

@@ -7,7 +7,9 @@ import com.jodelapp.features.todos.usecases.UserTodoListUseCaseModule;
 import dagger.Component;
 
 @ViewScope
-@Component(dependencies = AppComponent.class, modules = {UserTodoListModule.class, UserTodoListUseCaseModule.class})
+@Component(dependencies = AppComponent.class,
+        modules = {UserTodoListModule.class,
+                UserTodoListUseCaseModule.class})
 public interface UserTodoListComponent {
 
     void inject(UserTodoListView view);

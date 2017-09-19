@@ -79,6 +79,12 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
+
+//Added Libraries
+    compile 'com.roughike:bottom-bar:2.3.1'
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
+    compile 'net.alhazmy13.mediagallery:library:1.0.1'
+
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"
 

@@ -3,6 +3,8 @@ package com.jodelapp.features.photos.presentation;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +12,14 @@ import android.view.ViewGroup;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.features.photos.models.AlbumPresentationModel;
+import com.jodelapp.features.photos.models.PhotoPresentationModel;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -25,6 +32,11 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     private UserPhotoListComponent scopeGraph;
     private Unbinder unbinder;
 
+    @BindView(R.id.ls_user_albums)
+    RecyclerView lsUserAlbums;
+
+    private UserAlbumsAdapter adapter;
+
     public static UserPhotoListView getInstance() {
         return new UserPhotoListView();
     }
@@ -34,6 +46,7 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
         View view = inflater.inflate(R.layout.fragment_photos, container, false);
         setupScopeGraph(App.get(getActivity()).getAppComponent());
         unbinder = ButterKnife.bind(this, view);
+        initViews();
         return view;
     }
 
@@ -59,4 +72,21 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
         scopeGraph.inject(this);
     }
 
+    private void initViews() {
+        lsUserAlbums.setLayoutManager(new LinearLayoutManager(getActivity()));
+        lsUserAlbums.setHasFixedSize(true);
+    }
+
+    @Override
+    public void loadAlbumsList(List<AlbumPresentationModel> providers) {
+        adapter = new UserAlbumsAdapter(providers);
+        adapter.setPresenter(presenter);
+        lsUserAlbums.setAdapter(adapter);
+    }
+
+    @Override
+    public void loadPhotosList(List<PhotoPresentationModel> providers,int albumIndex) {
+        if(adapter!=null)
+            adapter.setAlbumPhotos(albumIndex,providers);
+    }
 }

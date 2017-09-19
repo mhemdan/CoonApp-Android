@@ -32,6 +32,7 @@ public final class UserTodoListPresenter implements UserTodoListContract.Present
 
     @Override
     public void onAttached() {
+        // here all time will return viewTransformer which is logic as it will be provided by dagger
         disposables.add(getTodoListByUser.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(

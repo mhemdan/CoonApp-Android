@@ -4,4 +4,8 @@
     <!-- splash screen-->
     <string name="splash_title">Challenge Accepted</string>
 
+    <string name="app_bottom_navigation_profile">Profile</string>
+    <string name="app_bottom_navigation_photos">Photos</string>
+    <string name="app_bottom_navigation_tasks">Tasks</string>
+
 </resources>

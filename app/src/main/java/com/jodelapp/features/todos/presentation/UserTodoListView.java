@@ -1,5 +1,6 @@
 package com.jodelapp.features.todos.presentation;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,9 +49,14 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
     }
 
 
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//    }
+
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onAttach(Context context) {
+        super.onAttach(context);
         presenter.onAttached();
     }
 

@@ -1,0 +1,14 @@
+<tabs>
+    <tab
+        id="@+id/tab_user"
+        icon="@drawable/ic_tab_bar_profile"
+        title="@string/app_bottom_navigation_profile" />
+    <tab
+        id="@+id/tab_photos"
+        icon="@drawable/ic_tab_bar_cat"
+        title="@string/app_bottom_navigation_photos" />
+    <tab
+        id="@+id/tab_tasks"
+        icon="@drawable/ic_tab_bar_home"
+        title="@string/app_bottom_navigation_tasks" />
+</tabs>
