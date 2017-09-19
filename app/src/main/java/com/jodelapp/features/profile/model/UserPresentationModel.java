@@ -8,7 +8,7 @@ import com.jodelapp.data.models.user.Company;
  */
 
 public class UserPresentationModel {
-    private Integer id;
+    private String id;
     private String name;
     private String username;
     private String email;
@@ -17,7 +17,7 @@ public class UserPresentationModel {
     private String website;
     private Company company;
 
-    public UserPresentationModel(Integer id, String name, String username, String email, Address address, String phone, String website, Company company) {
+    public UserPresentationModel(String id, String name, String username, String email, Address address, String phone, String website, Company company) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -28,7 +28,7 @@ public class UserPresentationModel {
         this.company = company;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 

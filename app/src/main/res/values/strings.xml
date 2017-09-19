@@ -8,4 +8,10 @@
     <string name="app_bottom_navigation_photos">Photos</string>
     <string name="app_bottom_navigation_tasks">Tasks</string>
 
+    <string name="app_profile_screen_email">Email:&#160;</string>
+    <string name="app_profile_screen_phone">Phone:&#160; </string>
+    <string name="app_profile_screen_company">Company:&#160;</string>
+    <string name="app_profile_screen_address">Address:&#160;</string>
+
+
 </resources>

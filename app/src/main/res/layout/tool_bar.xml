@@ -3,11 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="?attr/actionBarSize"
     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <!-- Implement your toolbar if you need-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/txt_toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:text="@string/app_bottom_navigation_profile"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/dimen_32"
+            android:layout_marginRight="@dimen/dimen_32"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"></View>
 
+    </RelativeLayout>
 </android.support.v7.widget.Toolbar>
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".features.photos.presentation.UserPhotoListView">
@@ -10,13 +11,14 @@
         <include
             android:id="@+id/tb_app"
             layout="@layout/tool_bar"
-            android:visibility="gone"/>
+            />
 
 
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/myScrollingContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--<android.support.v4.widget.NestedScrollView-->
+            <!--android:id="@+id/myScrollingContent"-->
+            <!---->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
                 <!-- Your loooooong scrolling content here. -->
                 <FrameLayout
@@ -25,13 +27,14 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/tb_app"
                     android:layout_above="@+id/bottomBar"/>
-        </android.support.v4.widget.NestedScrollView>
+        <!--</android.support.v4.widget.NestedScrollView>-->
 
         <com.roughike.bottombar.BottomBar
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
+            android:layout_alignParentBottom="true"
             app:bb_tabXmlResource="@xml/bottombar_tabs"
-            app:bb_behavior="shy"/>
-</android.support.design.widget.CoordinatorLayout>
+            />
+</RelativeLayout>

@@ -8,9 +8,11 @@ import com.jodelapp.data.DataComponent;
 import com.jodelapp.data.DataModule;
 import com.jodelapp.utilities.UtilsComponent;
 import com.jodelapp.utilities.UtilsModule;
+import com.jodelapp.utilities.database.DataBaseModule;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.sql.DatabaseMetaData;
 import java.util.Locale;
 
 import javax.inject.Singleton;

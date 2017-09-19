@@ -5,11 +5,10 @@
               android:background="@color/white"
               android:gravity="center"
               android:orientation="vertical">
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ls_user_todos"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginLeft="@dimen/dimen_32"
+        android:layout_marginRight="@dimen/dimen_32"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

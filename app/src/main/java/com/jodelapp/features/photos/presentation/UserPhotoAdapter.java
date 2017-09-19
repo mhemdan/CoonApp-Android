@@ -37,7 +37,7 @@ public class UserPhotoAdapter  extends RecyclerView.Adapter<UserPhotoAdapter.Vie
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Picasso.with(holder.imgPhotoThumbnail.getContext()).load(items.get(position).getThumbnailUrl()).
+        Picasso.with(holder.imgPhotoThumbnail.getContext()).load(items.get(position).getThumbnailUrl()).fit().
                 into(holder.imgPhotoThumbnail);
         holder.txtTitle.setText(items.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {

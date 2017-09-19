@@ -4,6 +4,8 @@ package com.jodelapp;
 import android.app.Application;
 import android.content.Context;
 
+import io.paperdb.Paper;
+
 public class App extends Application {
 
     private AppComponent appComponent;
@@ -12,7 +14,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         initComponents();
-
+        initDB();
     }
 
     public AppComponent getAppComponent() {
@@ -30,5 +32,9 @@ public class App extends Application {
                 .appModule(new AppModule(this))
                 .build();
         appComponent.inject(this);
+    }
+
+    private void initDB(){
+        Paper.init(this);
     }
 }

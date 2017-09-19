@@ -54,8 +54,10 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#b1000000"
+        android:background="@color/app_gray_color"
         android:layout_marginLeft="@dimen/dimen_16"
         android:layout_marginRight="@dimen/dimen_16"
-        android:layout_alignParentBottom="true"></View>
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_below="@id/expandableLayout"
+        ></View>
 </RelativeLayout>

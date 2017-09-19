@@ -14,6 +14,8 @@ import com.jodelapp.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.photos.models.AlbumPresentationModel;
 import com.jodelapp.features.photos.models.PhotoPresentationModel;
+import com.jodelapp.utilities.database.DataBaseHelper;
+import com.jodelapp.views.activities.MainActivity;
 
 import java.util.List;
 
@@ -34,11 +36,18 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
 
     @BindView(R.id.ls_user_albums)
     RecyclerView lsUserAlbums;
+//    @Inject
+//    DataBaseHelper dataBaseHelper;
 
     private UserAlbumsAdapter adapter;
+    private static final String USER_ID_KEY = "USER_ID_KEY";
 
-    public static UserPhotoListView getInstance() {
-        return new UserPhotoListView();
+    public static UserPhotoListView getInstance(String userID) {
+        Bundle bundle = new Bundle();
+        bundle.putString(USER_ID_KEY,userID);
+        UserPhotoListView fragment = new UserPhotoListView();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
@@ -51,11 +60,14 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     }
 
 
+
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         presenter.onAttached();
+//        presenter.setUserID(dataBaseHelper.getCurrentUser().getId());
     }
+
 
     @Override
     public void onDestroyView() {

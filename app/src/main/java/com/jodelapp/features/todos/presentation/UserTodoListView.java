@@ -14,6 +14,7 @@ import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
 import com.jodelapp.features.todos.models.TodoPresentationModel;
+import com.jodelapp.views.activities.MainActivity;
 
 import java.util.List;
 
@@ -38,7 +39,15 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
         return new UserTodoListView();
     }
 
+    private static final String USER_ID_KEY = "USER_ID_KEY";
 
+    public static UserTodoListView getInstance(String userID) {
+        Bundle bundle = new Bundle();
+        bundle.putString(USER_ID_KEY,userID);
+        UserTodoListView fragment = new UserTodoListView();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todos, container, false);
@@ -54,11 +63,14 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
 //        super.onActivityCreated(savedInstanceState);
 //    }
 
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         presenter.onAttached();
+        presenter.setUserID(getArguments().getString(USER_ID_KEY));
     }
+
 
     @Override
     public void onDestroyView() {

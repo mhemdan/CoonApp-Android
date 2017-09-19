@@ -45,8 +45,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
+    /* fixes espresso conflict with paper db new versions */
     configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
+        resolutionStrategy {
+            force 'com.google.code.findbugs:jsr305:2.0.1'
+            force 'org.objenesis:objenesis:2.1'
+            force 'org.ow2.asm:asm:5.0.1'
+        }
     }
 }
 
@@ -84,6 +91,7 @@ dependencies {
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     compile 'net.alhazmy13.mediagallery:library:1.0.1'
+    compile 'io.paperdb:paperdb:2.1'
 
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"

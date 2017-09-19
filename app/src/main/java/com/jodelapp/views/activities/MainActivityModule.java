@@ -30,4 +30,5 @@ public class MainActivityModule {
     public FragmentManager provideFragmentManager() {
         return ((AppCompatActivity) view).getSupportFragmentManager();
     }
+
 }

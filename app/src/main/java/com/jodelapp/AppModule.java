@@ -5,6 +5,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.jodelapp.utilities.database.DataBaseHelper;
+import com.jodelapp.utilities.database.DataBaseHelperImplementation;
+
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.Locale;
@@ -46,5 +49,6 @@ public class AppModule {
     EventBus provideEventBus() {
         return EventBus.getDefault();
     }
+
 
 }

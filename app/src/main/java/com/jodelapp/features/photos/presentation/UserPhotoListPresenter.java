@@ -15,7 +15,7 @@ import javax.inject.Inject;
 
 public final class UserPhotoListPresenter implements UserPhotoListContract.Presenter {
 
-    private static final String USER_ID = "1";
+    private  String USER_ID = "1";
 
     private final UserPhotoListContract.View view;
     private final GetAlbumsByUserID getAlbumsByUserID;
@@ -45,6 +45,11 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
                         todos -> view.loadAlbumsList(todos),
                         error -> Log.e("UserToDo", error.getMessage())
                 ));
+    }
+
+    @Override
+    public void setUserID(String userID) {
+        this.USER_ID = userID;
     }
 
     @Override

@@ -16,6 +16,7 @@ public interface UserPhotoListContract {
     interface Presenter {
         void onAttached();
 
+        void setUserID(String userID);
         void getPhotosByAlbumID(String albumID,int albumIndex);
 
         void onDetached();

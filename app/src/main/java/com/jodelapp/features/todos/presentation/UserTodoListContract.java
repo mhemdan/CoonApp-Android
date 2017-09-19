@@ -15,7 +15,7 @@ public interface UserTodoListContract {
     interface Presenter {
 
         void onAttached();
-
+        void setUserID(String userID);
         void onDetached();
     }
 }

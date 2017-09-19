@@ -12,7 +12,7 @@ import javax.inject.Inject;
 
 public final class UserTodoListPresenter implements UserTodoListContract.Presenter {
 
-    private static final String USER_ID = "1";
+    private String USER_ID = "1";
 
     private final UserTodoListContract.View view;
     private final GetTodoListByUser getTodoListByUser;
@@ -39,6 +39,11 @@ public final class UserTodoListPresenter implements UserTodoListContract.Present
                         todos -> view.loadToDoList(todos),
                         error -> Log.e("UserToDo", error.getMessage())
                 ));
+    }
+
+    @Override
+    public void setUserID(String userID) {
+        this.USER_ID = userID;
     }
 
     @Override

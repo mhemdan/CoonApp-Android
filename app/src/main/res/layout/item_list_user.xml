@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_8">
+<TextView
+    android:id="@+id/txt_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Mohammed Hemdan"/>
+    <LinearLayout
+        android:id="@+id/container_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/txt_name"
+        android:layout_margin="@dimen/dimen_8">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_profile_screen_email"/>
+
+    <TextView
+        android:id="@+id/txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shanna@melissa.tv"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/container_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/container_email"
+        android:layout_marginLeft="@dimen/dimen_8"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_profile_screen_phone"/>
+
+        <TextView
+            android:id="@+id/txt_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="010-692-6593"
+            android:inputType="phone"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txt_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:autoLink="web"
+        android:text="anastasia.net"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/container_phone"
+        android:layout_marginLeft="@dimen/dimen_16"
+        android:layout_marginRight="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:background="@color/app_gray_color"></View>
+
+</RelativeLayout>
