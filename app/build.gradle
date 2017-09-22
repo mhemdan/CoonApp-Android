@@ -92,6 +92,8 @@ dependencies {
     compile 'com.github.aakira:expandable-layout:1.6.0@aar'
     compile 'net.alhazmy13.mediagallery:library:1.0.1'
     compile 'io.paperdb:paperdb:2.1'
+    compile 'com.androidadvance:topsnackbar:1.1.1'
+    compile 'com.blankj:utilcode:1.9.0'
 
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"

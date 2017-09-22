@@ -13,5 +13,6 @@
     <string name="app_profile_screen_company">Company:&#160;</string>
     <string name="app_profile_screen_address">Address:&#160;</string>
 
+    <string name="app_internet_connection_error">Please Check your internet Connectivity</string>
 
 </resources>

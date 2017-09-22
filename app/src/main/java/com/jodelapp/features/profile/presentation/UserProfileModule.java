@@ -1,6 +1,8 @@
 package com.jodelapp.features.profile.presentation;
 
 import com.jodelapp.features.todos.presentation.UserTodoListContract;
+import com.jodelapp.utilities.database.DataBaseHelper;
+import com.jodelapp.utilities.database.DataBaseHelperImplementation;
 
 import dagger.Module;
 import dagger.Provides;
@@ -25,4 +27,9 @@ public class UserProfileModule {
     public UserProfileContract.Presenter providePresenter(UserProfilePresenter presenter) {
         return presenter;
     }
+
+//    @Provides
+//    public DataBaseHelper provideDataBaseHelper(){
+//        return new DataBaseHelperImplementation();
+//    }
 }

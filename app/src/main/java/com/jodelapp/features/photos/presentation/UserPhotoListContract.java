@@ -1,6 +1,7 @@
 package com.jodelapp.features.photos.presentation;
 
 
+import com.jodelapp.base.BaseView;
 import com.jodelapp.features.photos.models.AlbumPresentationModel;
 import com.jodelapp.features.photos.models.PhotoPresentationModel;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface UserPhotoListContract {
 
-    interface View {
+    interface View extends BaseView{
         void loadAlbumsList(List<AlbumPresentationModel> providers);
         void loadPhotosList(List<PhotoPresentationModel> providers,int albumIndex);
     }

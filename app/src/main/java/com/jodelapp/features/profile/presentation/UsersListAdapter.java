@@ -28,8 +28,6 @@ public class UsersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public UsersListAdapter(List<UserPresentationModel> todoDataList) {
         this.usersDataList.clear();
         this.usersDataList.addAll(todoDataList);
-        if(todoDataList.size()>0)
-            EventBus.getDefault().post(todoDataList.get(0));
     }
 
     @Override

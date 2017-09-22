@@ -15,7 +15,7 @@ import io.paperdb.Paper;
 public class DataBaseHelperImplementation implements DataBaseHelper{
 
     @Inject
-    DataBaseHelperImplementation(){
+    public DataBaseHelperImplementation(){
 
     }
 

@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.base.BaseFragment;
 import com.jodelapp.features.todos.models.TodoPresentationModel;
+import com.jodelapp.utilities.database.DataBaseHelper;
 import com.jodelapp.views.activities.MainActivity;
 
 import java.util.List;
@@ -24,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class UserTodoListView extends Fragment implements UserTodoListContract.View {
+public class UserTodoListView extends BaseFragment implements UserTodoListContract.View {
 
     @Inject
     UserTodoListContract.Presenter presenter;
@@ -35,19 +37,21 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
     private UserTodoListComponent scopeGraph;
     private Unbinder unbinder;
 
+    @Inject
+    DataBaseHelper dataBaseHelper;
     public static UserTodoListView getInstance() {
         return new UserTodoListView();
     }
 
-    private static final String USER_ID_KEY = "USER_ID_KEY";
+//    private static final String USER_ID_KEY = "USER_ID_KEY";
 
-    public static UserTodoListView getInstance(String userID) {
-        Bundle bundle = new Bundle();
-        bundle.putString(USER_ID_KEY,userID);
-        UserTodoListView fragment = new UserTodoListView();
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+//    public static UserTodoListView getInstance(String userID) {
+//        Bundle bundle = new Bundle();
+//        bundle.putString(USER_ID_KEY,userID);
+//        UserTodoListView fragment = new UserTodoListView();
+//        fragment.setArguments(bundle);
+//        return fragment;
+//    }
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todos, container, false);
@@ -58,17 +62,11 @@ public class UserTodoListView extends Fragment implements UserTodoListContract.V
     }
 
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//    }
-
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter.setUserID(dataBaseHelper.getCurrentUser().getId());
         presenter.onAttached();
-        presenter.setUserID(getArguments().getString(USER_ID_KEY));
     }
 
 

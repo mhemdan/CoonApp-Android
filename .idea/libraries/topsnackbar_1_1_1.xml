@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="topsnackbar-1.1.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/4d7955e39a4ea5376d75cb621d9d8e968a36128b/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/4d7955e39a4ea5376d75cb621d9d8e968a36128b/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.androidadvance/topsnackbar/1.1.1/7e2636bcda5697c7b04f04c9f90497a391fbc011/topsnackbar-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

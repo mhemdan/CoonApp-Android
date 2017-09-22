@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.base.BaseFragment;
 import com.jodelapp.features.photos.presentation.UserPhotoAdapter;
 import com.jodelapp.features.profile.model.UserPresentationModel;
 import com.jodelapp.features.todos.presentation.DaggerUserTodoListComponent;
@@ -39,7 +40,7 @@ import butterknife.Unbinder;
  * Created by m.hemdan on 9/18/17.
  */
 
-public class UsersProfileView extends Fragment implements UserProfileContract.View {
+public class UsersProfileView extends BaseFragment implements UserProfileContract.View {
 
     private UserProfileComponent scopeGraph;
     private Unbinder unbinder;
@@ -61,12 +62,14 @@ public class UsersProfileView extends Fragment implements UserProfileContract.Vi
 
     @Inject
     UserProfilePresenter presenter;
+    @Inject
+    DataBaseHelper dataBaseHelper;
 
 
 
 
 
-    public static UsersProfileView getInstance(UserPresentationModel userPresentationModel) {
+    public static UsersProfileView getInstance() {
         return new UsersProfileView();
     }
 
@@ -109,11 +112,16 @@ public class UsersProfileView extends Fragment implements UserProfileContract.Vi
     @Override
     public void loadUsers(List<UserPresentationModel> providers) {
         lsUsers.setAdapter(new UsersListAdapter(providers));
+        if(!dataBaseHelper.isThereActiveUser() && providers.size() > 0){
+            updateCurrentUser(providers.get(0));
+        }
     }
 
     private void initViews() {
         lsUsers.setLayoutManager(new LinearLayoutManager(getContext()));
         lsUsers.setHasFixedSize(true);
+        if(dataBaseHelper.isThereActiveUser())
+            updateCurrentUser(dataBaseHelper.getCurrentUser());
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -125,6 +133,7 @@ public class UsersProfileView extends Fragment implements UserProfileContract.Vi
         txtAddress.setText(userPresentationModel.getAddress().getCity()+
                 "/" + userPresentationModel.getAddress().getStreet());
         txtWebsite.setText(userPresentationModel.getWebsite());
+        dataBaseHelper.saveCurrentUser(userPresentationModel);
     }
     private void setupScopeGraph(AppComponent appComponent) {
         scopeGraph = DaggerUserProfileComponent.builder()

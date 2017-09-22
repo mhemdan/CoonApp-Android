@@ -3,12 +3,30 @@
 
     <item
         is-multidex="true"
+        jar="/Users/m.hemdan/.android/build-cache/37991ae50721a0a902db10382737c6e4503c152f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3c354f878ab34215a1e556c3921cf956f55c4239">
+        <dex dex="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c43b4f4b41198ffdd0d3eecb9403385af873f3cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="215e6c4d8e9b69100e80bac497fd1f38a1d0148b">
+        sha1="cb76425f0d5646553e287b6788ac4b1cb7dad912">
         <dex dex="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_e8fd80e43b10fabb2807c1e0690e854307201f13/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/m.hemdan/.android/build-cache/4d7955e39a4ea5376d75cb621d9d8e968a36128b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="cb3cf97748344da6fad1deb830c7c479a7c53645">
+        <dex dex="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_25ba6fe7f0f6b84fea9d8ac9372d9acf7b0e6ff6/classes.dex" />
     </item>
     <item
         is-multidex="true"

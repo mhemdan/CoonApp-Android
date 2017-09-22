@@ -10,6 +10,8 @@ import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
 
+import java.net.UnknownHostException;
+
 import javax.inject.Inject;
 
 
@@ -42,8 +44,8 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         disposables.add(getAlbumsByUserID.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        todos -> view.loadAlbumsList(todos),
-                        error -> Log.e("UserToDo", error.getMessage())
+                        albums -> view.loadAlbumsList(albums),
+                        error -> view.showError(error.getMessage())
                 ));
     }
 
@@ -57,9 +59,8 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         disposables.add(getPhotosForUserByAlbumID.call(albumID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        todos -> view.loadPhotosList(todos,albumIndex),
-                        error -> Log.e("UserToDo", error.getMessage())
-                ));
+                        photos -> view.loadPhotosList(photos,albumIndex),
+                        error -> view.showError(error.getMessage())));
     }
 
     @Override

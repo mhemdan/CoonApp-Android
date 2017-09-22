@@ -4,6 +4,8 @@ package com.jodelapp;
 import android.app.Application;
 import android.content.Context;
 
+import com.blankj.utilcode.util.Utils;
+
 import io.paperdb.Paper;
 
 public class App extends Application {
@@ -14,7 +16,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         initComponents();
-        initDB();
+        init();
     }
 
     public AppComponent getAppComponent() {
@@ -34,7 +36,8 @@ public class App extends Application {
         appComponent.inject(this);
     }
 
-    private void initDB(){
+    private void init(){
         Paper.init(this);
+        Utils.init(this);
     }
 }

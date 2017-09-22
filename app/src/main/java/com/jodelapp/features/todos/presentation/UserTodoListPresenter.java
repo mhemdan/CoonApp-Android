@@ -37,7 +37,7 @@ public final class UserTodoListPresenter implements UserTodoListContract.Present
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
                         todos -> view.loadToDoList(todos),
-                        error -> Log.e("UserToDo", error.getMessage())
+                        error -> view.showError(error.getMessage())
                 ));
     }
 

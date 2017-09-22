@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.base.BaseFragment;
 import com.jodelapp.features.photos.models.AlbumPresentationModel;
 import com.jodelapp.features.photos.models.PhotoPresentationModel;
 import com.jodelapp.utilities.database.DataBaseHelper;
@@ -25,7 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class UserPhotoListView extends Fragment implements UserPhotoListContract.View {
+public class UserPhotoListView extends BaseFragment implements UserPhotoListContract.View {
 
 
     @Inject
@@ -36,19 +37,14 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
 
     @BindView(R.id.ls_user_albums)
     RecyclerView lsUserAlbums;
-//    @Inject
-//    DataBaseHelper dataBaseHelper;
 
+    @Inject
+    DataBaseHelper dataBaseHelper;
     private UserAlbumsAdapter adapter;
-    private static final String USER_ID_KEY = "USER_ID_KEY";
-
-    public static UserPhotoListView getInstance(String userID) {
-        Bundle bundle = new Bundle();
-        bundle.putString(USER_ID_KEY,userID);
-        UserPhotoListView fragment = new UserPhotoListView();
-        fragment.setArguments(bundle);
-        return fragment;
+    public static UserPhotoListView getInstance(){
+        return new UserPhotoListView();
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {
@@ -64,8 +60,8 @@ public class UserPhotoListView extends Fragment implements UserPhotoListContract
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter.setUserID(dataBaseHelper.getCurrentUser().getId());
         presenter.onAttached();
-//        presenter.setUserID(dataBaseHelper.getCurrentUser().getId());
     }
 
 

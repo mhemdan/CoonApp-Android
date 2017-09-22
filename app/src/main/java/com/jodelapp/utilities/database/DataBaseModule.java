@@ -1,6 +1,5 @@
 package com.jodelapp.utilities.database;
 
-import com.jodelapp.di.scope.ActivityScope;
 
 import javax.inject.Singleton;
 
@@ -13,7 +12,7 @@ import dagger.Provides;
 @Module
 public class DataBaseModule {
     @Provides
-    @ActivityScope
+    @Singleton
     public DataBaseHelper provideDataBaseHelper(DataBaseHelperImplementation dataBaseHelperImplementation){
         return dataBaseHelperImplementation;
     }

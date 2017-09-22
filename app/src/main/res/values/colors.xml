@@ -7,4 +7,5 @@
     <color name="black">#000000</color>
     <color name="app_gray_color">#bababa</color>
     <color name="app_transparent_black_color">#ab000000</color>
+    <color name="app_snackbar_error_background">#ef436c</color>
 </resources>

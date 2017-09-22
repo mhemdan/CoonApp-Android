@@ -16,7 +16,10 @@ public class UserPresentationModel {
     private String phone;
     private String website;
     private Company company;
+    
+    public UserPresentationModel(){
 
+    }
     public UserPresentationModel(String id, String name, String username, String email, Address address, String phone, String website, Company company) {
         this.id = id;
         this.name = name;

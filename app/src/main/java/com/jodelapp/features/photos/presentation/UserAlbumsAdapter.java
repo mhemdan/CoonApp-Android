@@ -88,12 +88,13 @@ public class UserAlbumsAdapter extends RecyclerView.Adapter<UserAlbumsAdapter.Vi
         });
 
         holder.buttonLayout.setRotation(expandState.get(position) ? 180f : 0f);
-        holder.buttonLayout.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 onClickButton(holder.expandableLayout);
             }
         });
+
     }
 
     private void onClickButton(final ExpandableLayout expandableLayout) {

@@ -1,5 +1,6 @@
 package com.jodelapp.features.profile.presentation;
 
+import com.jodelapp.base.BaseView;
 import com.jodelapp.features.profile.model.UserPresentationModel;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
  */
 
 public interface UserProfileContract {
-    interface View {
+    interface View extends BaseView{
         void loadUsers(List<UserPresentationModel> providers);
     }
 

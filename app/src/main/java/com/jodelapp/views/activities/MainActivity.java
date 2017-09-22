@@ -9,11 +9,13 @@ import android.widget.TextView;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
+import com.jodelapp.base.BaseActivity;
 import com.jodelapp.features.photos.presentation.UserPhotoListView;
 import com.jodelapp.features.profile.model.UserPresentationModel;
 import com.jodelapp.features.profile.presentation.UsersProfileView;
 import com.jodelapp.features.todos.presentation.UserTodoListView;
 import com.jodelapp.utilities.database.DataBaseHelper;
+import com.jodelapp.utilities.database.DataBaseModule;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -26,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements MainActivityContract.View, OnTabSelectListener {
+public class MainActivity extends BaseActivity implements MainActivityContract.View, OnTabSelectListener {
 
     @Inject
     MainActivityContract.Presenter presenter;
@@ -42,13 +44,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private MainActivityComponent scopeGraph;
     private String currentUserID = "1";
 
-    @Inject
-    DataBaseHelper dataBaseHelper;
+
 
     @Override
     public void loadToDoPage() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.v_container, UsersProfileView.getInstance(dataBaseHelper.getCurrentUser()))
+                .replace(R.id.v_container, UsersProfileView.getInstance())
                 .commit();
     }
 
@@ -92,27 +93,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             case R.id.tab_user:
                 txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_profile));
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UsersProfileView.getInstance(dataBaseHelper.getCurrentUser()))
+                        .replace(R.id.v_container, UsersProfileView.getInstance())
                         .commit();
                 break;
             case R.id.tab_photos:
                 txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_photos));
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UserPhotoListView.getInstance(currentUserID))
+                        .replace(R.id.v_container, UserPhotoListView.getInstance())
                         .commit();
                 break;
             case R.id.tab_tasks:
                 txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_tasks));
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UserTodoListView.getInstance(currentUserID))
+                        .replace(R.id.v_container, UserTodoListView.getInstance())
                         .commit();
                 break;
         }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void updateCurrentUser(UserPresentationModel userPresentationModel){
-        currentUserID = String.valueOf(userPresentationModel.getId());
-        dataBaseHelper.saveCurrentUser(userPresentationModel);
-    }
 }

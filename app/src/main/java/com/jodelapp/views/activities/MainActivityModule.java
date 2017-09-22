@@ -4,6 +4,11 @@ package com.jodelapp.views.activities;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.jodelapp.utilities.database.DataBaseHelper;
+import com.jodelapp.utilities.database.DataBaseHelperImplementation;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -30,5 +35,10 @@ public class MainActivityModule {
     public FragmentManager provideFragmentManager() {
         return ((AppCompatActivity) view).getSupportFragmentManager();
     }
+
+//    @Provides
+//    public DataBaseHelper provideDataBaseHelper(){
+//        return new DataBaseHelperImplementation();
+//    }
 
 }

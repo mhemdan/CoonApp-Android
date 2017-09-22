@@ -39,7 +39,7 @@ public class UserProfilePresenter implements UserProfileContract.Presenter{
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
                         users -> view.loadUsers(users),
-                        error -> Log.e("UserToDo", error.getMessage())
+                        error ->view.showError(error.getMessage())
                 ));
     }
 

@@ -1,10 +1,11 @@
 package com.jodelapp.views.activities;
 
 
+import com.jodelapp.base.BaseView;
+
 public interface MainActivityContract {
 
-    interface View {
-
+    interface View extends BaseView {
 
         void loadToDoPage();
     }

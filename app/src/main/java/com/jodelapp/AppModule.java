@@ -50,5 +50,4 @@ public class AppModule {
         return EventBus.getDefault();
     }
 
-
 }
