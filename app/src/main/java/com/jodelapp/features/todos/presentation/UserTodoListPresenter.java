@@ -36,7 +36,12 @@ public final class UserTodoListPresenter implements UserTodoListContract.Present
         disposables.add(getTodoListByUser.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        todos -> view.loadToDoList(todos),
+                        todos ->{
+                            if(todos.size()>0)
+                                view.loadToDoList(todos);
+                            else
+                                view.showEmptyView();
+                        },
                         error -> view.showError(error.getMessage())
                 ));
     }

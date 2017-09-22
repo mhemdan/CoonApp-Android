@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 
 public class UserPhotoAdapter  extends RecyclerView.Adapter<UserPhotoAdapter.ViewHolder>{
     private List<PhotoPresentationModel> items;
+    private String albumName;
     public  UserPhotoAdapter(List<PhotoPresentationModel> items){
         this.items = items;
     }
@@ -33,6 +34,10 @@ public class UserPhotoAdapter  extends RecyclerView.Adapter<UserPhotoAdapter.Vie
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list_photos, parent, false));
+    }
+
+    public void setAlbumName(String albumName){
+        this.albumName = albumName;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class UserPhotoAdapter  extends RecyclerView.Adapter<UserPhotoAdapter.Vie
             public void onClick(View v) {
                 MediaGallery.Builder(((Activity) v.getContext()),
                         getPhotoUrlLis())
-                        .title("Albums Gallery")
+                        .title(albumName)
                         .backgroundColor(R.color.white)
                         .placeHolder(R.drawable.media_gallery_placeholder)
                         .selectedImagePosition(position)

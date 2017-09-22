@@ -44,7 +44,14 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         disposables.add(getAlbumsByUserID.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        albums -> view.loadAlbumsList(albums),
+                        albums ->
+                        {
+                            if(albums.size()>0)
+                                view.loadAlbumsList(albums);
+                            else
+                                view.showEmptyView();
+
+                        },
                         error -> view.showError(error.getMessage())
                 ));
     }
@@ -59,7 +66,9 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
         disposables.add(getPhotosForUserByAlbumID.call(albumID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        photos -> view.loadPhotosList(photos,albumIndex),
+                        photos -> {
+                            view.loadPhotosList(photos,albumIndex);
+                        },
                         error -> view.showError(error.getMessage())));
     }
 

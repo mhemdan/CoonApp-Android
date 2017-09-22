@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
@@ -37,7 +38,10 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
 
     @BindView(R.id.ls_user_albums)
     RecyclerView lsUserAlbums;
-
+    @BindView(R.id.empty_view)
+    View emptyView;
+    @BindView(R.id.offline_view)
+    View offlineView;
     @Inject
     DataBaseHelper dataBaseHelper;
     private UserAlbumsAdapter adapter;
@@ -87,6 +91,9 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
 
     @Override
     public void loadAlbumsList(List<AlbumPresentationModel> providers) {
+        emptyView.setVisibility(View.GONE);
+        offlineView.setVisibility(View.GONE);
+        lsUserAlbums.setVisibility(View.VISIBLE);
         adapter = new UserAlbumsAdapter(providers);
         adapter.setPresenter(presenter);
         lsUserAlbums.setAdapter(adapter);
@@ -96,5 +103,27 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
     public void loadPhotosList(List<PhotoPresentationModel> providers,int albumIndex) {
         if(adapter!=null)
             adapter.setAlbumPhotos(albumIndex,providers);
+    }
+
+    @Override
+    public void showEmptyView() {
+        emptyView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        lsUserAlbums.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showOfflineView() {
+        offlineView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        lsUserAlbums.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError(String message) {
+        super.showError(message);
+        if(!NetworkUtils.isConnected()){
+           showOfflineView();
+        }
     }
 }

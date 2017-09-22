@@ -5,7 +5,7 @@
              android:orientation="vertical">
 
     <include layout="@layout/include_empty_view"/>
-
+    <include layout="@layout/include_offline_view"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ls_user_albums"
         android:layout_width="match_parent"

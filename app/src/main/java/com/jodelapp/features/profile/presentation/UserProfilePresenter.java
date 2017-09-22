@@ -38,7 +38,12 @@ public class UserProfilePresenter implements UserProfileContract.Presenter{
         disposables.add(getUsersList.call()
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
-                        users -> view.loadUsers(users),
+                        users ->{
+                            if(users.size()>0)
+                                view.loadUsers(users);
+                            else
+                                view.showEmptyView();
+                        },
                         error ->view.showError(error.getMessage())
                 ));
     }

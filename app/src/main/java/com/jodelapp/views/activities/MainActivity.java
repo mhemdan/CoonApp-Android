@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     Toolbar tbApp;
 
     @BindView(R.id.bottomBar)
-    BottomBar bottomBar;
+    public BottomBar bottomBar;
     @BindView(R.id.txt_toolbar_title)
     TextView txtToolbarTitle;
 

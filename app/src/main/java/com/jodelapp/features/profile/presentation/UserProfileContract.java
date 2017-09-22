@@ -12,6 +12,8 @@ import java.util.List;
 public interface UserProfileContract {
     interface View extends BaseView{
         void loadUsers(List<UserPresentationModel> providers);
+        void showEmptyView();
+        void showOfflineView();
     }
 
     interface Presenter {

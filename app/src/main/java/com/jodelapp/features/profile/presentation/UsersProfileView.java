@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
@@ -59,6 +60,12 @@ public class UsersProfileView extends BaseFragment implements UserProfileContrac
     TextView txtCompany;
     @BindView(R.id.txt_address)
     TextView txtAddress;
+    @BindView(R.id.empty_view)
+    View emptyView;
+    @BindView(R.id.offline_view)
+    View offlineView;
+    @BindView(R.id.container_users)
+    View containerUsers;
 
     @Inject
     UserProfilePresenter presenter;
@@ -111,10 +118,27 @@ public class UsersProfileView extends BaseFragment implements UserProfileContrac
 
     @Override
     public void loadUsers(List<UserPresentationModel> providers) {
+        containerUsers.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        offlineView.setVisibility(View.GONE);
         lsUsers.setAdapter(new UsersListAdapter(providers));
         if(!dataBaseHelper.isThereActiveUser() && providers.size() > 0){
             updateCurrentUser(providers.get(0));
         }
+    }
+
+    @Override
+    public void showEmptyView() {
+        emptyView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        containerUsers.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showOfflineView() {
+        offlineView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        containerUsers.setVisibility(View.GONE);
     }
 
     private void initViews() {
@@ -141,6 +165,14 @@ public class UsersProfileView extends BaseFragment implements UserProfileContrac
                 .userProfileModule(new UserProfileModule(this))
                 .build();
         scopeGraph.inject(this);
+    }
+
+    @Override
+    public void showError(String message) {
+        super.showError(message);
+        if(!NetworkUtils.isConnected()){
+            showOfflineView();
+        }
     }
 
 }

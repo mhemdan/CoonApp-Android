@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.NetworkUtils;
 import com.jodelapp.App;
 import com.jodelapp.AppComponent;
 import com.jodelapp.R;
@@ -33,6 +34,10 @@ public class UserTodoListView extends BaseFragment implements UserTodoListContra
 
     @BindView(R.id.ls_user_todos)
     RecyclerView lsUserToDos;
+    @BindView(R.id.empty_view)
+    View emptyView;
+    @BindView(R.id.offline_view)
+    View offlineView;
 
     private UserTodoListComponent scopeGraph;
     private Unbinder unbinder;
@@ -79,9 +84,26 @@ public class UserTodoListView extends BaseFragment implements UserTodoListContra
 
     @Override
     public void loadToDoList(List<TodoPresentationModel> toDos) {
+        lsUserToDos.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        offlineView.setVisibility(View.GONE);
         UserTodoListAdapter adapter = new UserTodoListAdapter(toDos);
         lsUserToDos.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showEmptyView() {
+        lsUserToDos.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+        offlineView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showOfflineView() {
+        lsUserToDos.setVisibility(View.GONE);
+        offlineView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
     }
 
     private void initViews() {
@@ -96,5 +118,13 @@ public class UserTodoListView extends BaseFragment implements UserTodoListContra
                 .userTodoListModule(new UserTodoListModule(this))
                 .build();
         scopeGraph.inject(this);
+    }
+
+    @Override
+    public void showError(String message) {
+        super.showError(message);
+        if(!NetworkUtils.isConnected()){
+            showOfflineView();
+        }
     }
 }

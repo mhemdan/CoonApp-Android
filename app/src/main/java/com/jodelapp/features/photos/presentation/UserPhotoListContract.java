@@ -12,6 +12,8 @@ public interface UserPhotoListContract {
     interface View extends BaseView{
         void loadAlbumsList(List<AlbumPresentationModel> providers);
         void loadPhotosList(List<PhotoPresentationModel> providers,int albumIndex);
+        void showEmptyView();
+        void showOfflineView();
     }
 
     interface Presenter {

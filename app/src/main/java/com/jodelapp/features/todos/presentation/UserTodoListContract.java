@@ -11,6 +11,9 @@ public interface UserTodoListContract {
     interface View extends BaseView {
 
         void loadToDoList(List<TodoPresentationModel> providers);
+
+        void showEmptyView();
+        void showOfflineView();
     }
 
     interface Presenter {

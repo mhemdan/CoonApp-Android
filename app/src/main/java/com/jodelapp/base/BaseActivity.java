@@ -26,6 +26,7 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
         TextView textView = (TextView) snackbarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
         textView.setTextColor(Color.WHITE);
         snackbar.show();
+
     }
 
     @Override

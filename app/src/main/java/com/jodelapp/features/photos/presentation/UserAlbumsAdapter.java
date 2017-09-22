@@ -70,8 +70,11 @@ public class UserAlbumsAdapter extends RecyclerView.Adapter<UserAlbumsAdapter.Vi
         holder.expandableLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.white));
         holder.expandableLayout.setInterpolator(Utils.createInterpolator(Utils.LINEAR_OUT_SLOW_IN_INTERPOLATOR));
         holder.expandableLayout.setExpanded(expandState.get(position));
-        if(item.getPhotoPresentationModelList()!=null)
-            holder.lsUserPhotos.setAdapter(new UserPhotoAdapter(item.getPhotoPresentationModelList()));
+        if(item.getPhotoPresentationModelList()!=null) {
+            UserPhotoAdapter adapter = new UserPhotoAdapter(item.getPhotoPresentationModelList());
+            adapter.setAlbumName(item.getTitle());
+            holder.lsUserPhotos.setAdapter(adapter);
+        }
         holder.expandableLayout.setListener(new ExpandableLayoutListenerAdapter() {
             @Override
             public void onPreOpen() {
