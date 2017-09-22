@@ -33,16 +33,26 @@ public final class UserTodoListPresenter implements UserTodoListContract.Present
     @Override
     public void onAttached() {
         // here all time will return viewTransformer which is logic as it will be provided by dagger
+        if(view != null)
+            view.showLoading();
         disposables.add(getTodoListByUser.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
                         todos ->{
-                            if(todos.size()>0)
-                                view.loadToDoList(todos);
-                            else
-                                view.showEmptyView();
+                            if(view != null) {
+                                view.hideLoading();
+                                if (todos.size() > 0)
+                                    view.loadToDoList(todos);
+                                else
+                                    view.showEmptyView();
+                            }
                         },
-                        error -> view.showError(error.getMessage())
+                        error -> {
+                            if(view != null) {
+                                view.hideLoading();
+                                view.showError(error.getMessage());
+                            }
+                        }
                 ));
     }
 

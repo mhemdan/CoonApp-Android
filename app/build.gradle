@@ -94,6 +94,7 @@ dependencies {
     compile 'io.paperdb:paperdb:2.1'
     compile 'com.androidadvance:topsnackbar:1.1.1'
     compile 'com.blankj:utilcode:1.9.0'
+    compile 'com.github.justzak:dilatingdotsprogressbar:1.0.1'
 
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterknifeVersion}"

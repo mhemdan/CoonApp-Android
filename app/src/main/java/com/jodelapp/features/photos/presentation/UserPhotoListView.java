@@ -25,6 +25,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class UserPhotoListView extends BaseFragment implements UserPhotoListContract.View {
@@ -125,5 +126,10 @@ public class UserPhotoListView extends BaseFragment implements UserPhotoListCont
         if(!NetworkUtils.isConnected()){
            showOfflineView();
         }
+    }
+
+    @OnClick(R.id.btn_retry)
+    public void onBtnRetryClick(View view){
+        presenter.onAttached();
     }
 }

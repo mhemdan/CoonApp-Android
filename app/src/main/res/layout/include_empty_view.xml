@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/empty_view"
-    android:visibility="visible">
+    android:visibility="gone">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -15,5 +15,6 @@
     android:gravity="center"
     android:textSize="@dimen/app_text_size_medium"
     android:text="@string/app_empty_data_error"/>
+
 
 </RelativeLayout>

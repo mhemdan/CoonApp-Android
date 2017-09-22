@@ -7,7 +7,7 @@ public interface MainActivityContract {
 
     interface View extends BaseView {
 
-        void loadToDoPage();
+        void loadView();
     }
 
     interface Presenter {

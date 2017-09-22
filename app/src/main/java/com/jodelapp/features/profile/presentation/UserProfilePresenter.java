@@ -35,16 +35,27 @@ public class UserProfilePresenter implements UserProfileContract.Presenter{
     @Override
     public void onAttached() {
         // here all time will return viewTransformer which is logic as it will be provided by dagger
+        if(view != null)
+            view.showLoading();
+
         disposables.add(getUsersList.call()
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
                         users ->{
-                            if(users.size()>0)
-                                view.loadUsers(users);
-                            else
-                                view.showEmptyView();
+                            if(view != null) {
+                                view.hideLoading();
+                                if (users.size() > 0)
+                                    view.loadUsers(users);
+                                else
+                                    view.showEmptyView();
+                            }
                         },
-                        error ->view.showError(error.getMessage())
+                        error ->{
+                            if(view != null){
+                                view.hideLoading();
+                                view.showError(error.getMessage());
+                            }
+                        }
                 ));
     }
 

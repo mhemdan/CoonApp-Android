@@ -254,6 +254,15 @@
         <dex dex="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/pre-dexed/debug/classes_76c72474150eb151cd322a3e0dacaa7dbbd3d394.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/m.hemdan/.android/build-cache/02241ddf9f88e8588b98c10e3bde1d0bbcf0e196/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5a915b81ccabe1e634091a8728c71a7e9f8105fb">
+        <dex dex="/Users/m.hemdan/Downloads/Work/Tasks/Jodel Task/CoonApp-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_61f97bbf9567b63d61a7576729951ee95f26badd/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/m.hemdan/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
         jumboMode="false"

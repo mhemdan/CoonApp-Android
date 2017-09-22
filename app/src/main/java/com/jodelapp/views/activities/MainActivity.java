@@ -47,10 +47,8 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
 
 
     @Override
-    public void loadToDoPage() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.v_container, UsersProfileView.getInstance())
-                .commit();
+    public void loadView() {
+        bottomBar.setOnTabSelectListener(this);
     }
 
 
@@ -84,31 +82,64 @@ public class MainActivity extends BaseActivity implements MainActivityContract.V
     private void initViews() {
         ButterKnife.bind(this);
         setSupportActionBar(tbApp);
-        bottomBar.setOnTabSelectListener(this);
     }
 
     @Override
     public void onTabSelected(@IdRes int tabId) {
         switch (tabId){
             case R.id.tab_user:
-                txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_profile));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UsersProfileView.getInstance())
-                        .commit();
+                navigateToProfilePage();
                 break;
             case R.id.tab_photos:
-                txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_photos));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UserPhotoListView.getInstance())
-                        .commit();
+                navigateToUserPhotos();
                 break;
             case R.id.tab_tasks:
-                txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_tasks));
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.v_container, UserTodoListView.getInstance())
-                        .commit();
+                navigateToUserToDoList();
                 break;
         }
     }
 
+    private void navigateToUserToDoList() {
+        txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_tasks));
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.v_container, UserTodoListView.getInstance())
+                .commit();
+    }
+
+    private void navigateToUserPhotos() {
+        txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_photos));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.v_container, UserPhotoListView.getInstance())
+                .commit();
+    }
+
+    private void navigateToProfilePage() {
+        txtToolbarTitle.setText(getResources().getString(R.string.app_bottom_navigation_profile));
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.v_container, UsersProfileView.getInstance())
+                .commit();
+    }
+
+    @Override
+    public void showLoading() {
+        LoadingFragment fragment = (LoadingFragment) getSupportFragmentManager().findFragmentByTag(LoadingFragment.FRAGMENT_TAG);
+        if (fragment == null) {
+            fragment = new LoadingFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.v_container,fragment, LoadingFragment.FRAGMENT_TAG)
+                    .commitAllowingStateLoss();
+
+            // fragment.show(getSupportFragmentManager().beginTransaction(), LoadingDialogFragment.FRAGMENT_TAG);
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        LoadingFragment fragment = (LoadingFragment) getSupportFragmentManager().findFragmentByTag(LoadingFragment.FRAGMENT_TAG);
+        if (fragment != null) {
+            // fragment.dismissAllowingStateLoss();
+            getSupportFragmentManager().beginTransaction().remove(fragment).commitAllowingStateLoss();
+        }
+    }
 }

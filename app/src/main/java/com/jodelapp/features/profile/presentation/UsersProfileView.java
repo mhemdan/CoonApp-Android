@@ -35,6 +35,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -173,6 +174,11 @@ public class UsersProfileView extends BaseFragment implements UserProfileContrac
         if(!NetworkUtils.isConnected()){
             showOfflineView();
         }
+    }
+
+    @OnClick(R.id.btn_retry)
+    public void onBtnRetryClick(View view){
+        presenter.onAttached();
     }
 
 }

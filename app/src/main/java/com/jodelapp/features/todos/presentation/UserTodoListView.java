@@ -25,6 +25,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class UserTodoListView extends BaseFragment implements UserTodoListContract.View {
@@ -126,5 +127,10 @@ public class UserTodoListView extends BaseFragment implements UserTodoListContra
         if(!NetworkUtils.isConnected()){
             showOfflineView();
         }
+    }
+
+    @OnClick(R.id.btn_retry)
+    public void onBtnRetryClick(View view){
+        presenter.onAttached();
     }
 }

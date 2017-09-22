@@ -1,11 +1,8 @@
 package com.jodelapp.views.activities;
 
-import com.jodelapp.utilities.StringUtils;
 import com.jodelapp.utilities.rx.RxDisposableFactory;
 import com.jodelapp.utilities.rx.RxDisposables;
 import com.jodelapp.utilities.rx.ThreadTransformer;
-
-import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -25,7 +22,7 @@ public final class MainActivityPresenter implements MainActivityContract.Present
 
     @Override
     public void onCreate() {
-        view.loadToDoPage();
+        view.loadView();
     }
 
     @Override

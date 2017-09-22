@@ -41,18 +41,26 @@ public final class UserPhotoListPresenter implements UserPhotoListContract.Prese
 
     @Override
     public void onAttached() {
+        if(view != null)
+            view.showLoading();
         disposables.add(getAlbumsByUserID.call(USER_ID)
                 .compose(threadTransformer.applySchedulers())
                 .subscribe(
                         albums ->
                         {
-                            if(albums.size()>0)
-                                view.loadAlbumsList(albums);
-                            else
-                                view.showEmptyView();
-
+                            if(view != null) {
+                                view.hideLoading();
+                                if (albums.size() > 0)
+                                    view.loadAlbumsList(albums);
+                                else
+                                    view.showEmptyView();
+                            }
                         },
-                        error -> view.showError(error.getMessage())
+                        error -> {
+                            if(view != null) {
+                                view.hideLoading();
+                                view.showError(error.getMessage());
+                            }}
                 ));
     }
 

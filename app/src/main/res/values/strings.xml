@@ -14,6 +14,9 @@
     <string name="app_profile_screen_address">Address:&#160;</string>
 
     <string name="app_internet_connection_error">Please Check your internet Connectivity</string>
+    <string name="app_internet_connection_error_with_retry">Please Check your internet Connectivity then press Retry</string>
+    <string name="app_internet_connection_retry_btn">Retry</string>
+
 
     <string name="app_empty_data_error">Unfortunate there are no result currently now may be later. </string>
 </resources>
